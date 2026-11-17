@@ -1,0 +1,6 @@
+scenario,attack_technique,log_source,event_ids,test_executed,telemetry_observed,detection_validated,false_positive_notes,investigation_link,notes
+PowerShell execution,T1059.001,PowerShell Operational,4104,No,Not tested,No,,,
+System information discovery,T1082,Sysmon Operational,1,No,Not tested,No,,,
+Account discovery,T1087,Sysmon Operational,1,No,Not tested,No,,,
+Scheduled task activity,T1053.005,Sysmon and Windows logs,TBD,No,Not tested,No,,,Use isolated VM for persistence-changing tests
+Command shell execution,T1059.003,Sysmon Operational,1,No,Not tested,No,,,

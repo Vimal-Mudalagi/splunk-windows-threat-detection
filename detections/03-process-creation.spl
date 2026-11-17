@@ -1,0 +1,9 @@
+# STATUS: STARTER QUERY — NOT VALIDATED AGAINST A CONTROLLED TEST
+# TODO: Record test ID, expected event IDs, matching evidence, false positives, and final tuning.
+index=main source="WinEventLog:Microsoft-Windows-Sysmon/Operational"
+| rex field=_raw "<EventID>(?<event_id>\d+)</EventID>"
+| search event_id="1"
+| rex field=_raw "<Data Name='Image'>(?<Image>[^<]*)</Data>"
+| rex field=_raw "<Data Name='CommandLine'>(?<CommandLine>[^<]*)</Data>"
+| rex field=_raw "<Data Name='ParentImage'>(?<ParentImage>[^<]*)</Data>"
+| table _time host Image ParentImage CommandLine

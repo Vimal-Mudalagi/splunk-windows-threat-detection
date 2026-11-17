@@ -1,0 +1,6 @@
+# STATUS: STARTER QUERY — NOT VALIDATED AGAINST A CONTROLLED TEST
+# TODO: Record test ID, expected event IDs, matching evidence, false positives, and final tuning.
+index=main source="WinEventLog:Security"
+| rex field=_raw "<EventID>(?<event_id>\d+)</EventID>"
+| search event_id="4625"
+| timechart span=15m count AS failed_logons

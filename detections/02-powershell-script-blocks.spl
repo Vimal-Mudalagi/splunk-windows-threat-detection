@@ -1,0 +1,6 @@
+# STATUS: STARTER QUERY — NOT VALIDATED AGAINST A CONTROLLED TEST
+# TODO: Record test ID, expected event IDs, matching evidence, false positives, and final tuning.
+index=main source="WinEventLog:Microsoft-Windows-PowerShell/Operational"
+| rex field=_raw "<EventID>(?<event_id>\d+)</EventID>"
+| search event_id="4104"
+| table _time host source _raw

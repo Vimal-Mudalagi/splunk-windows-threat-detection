@@ -1,0 +1,20 @@
+# Example only; sanitized. Requires appropriate Windows event-log permissions.
+[WinEventLog://Microsoft-Windows-Sysmon/Operational]
+disabled = 0
+index = main
+renderXml = true
+
+[WinEventLog://Security]
+disabled = 0
+index = main
+renderXml = true
+
+[WinEventLog://System]
+disabled = 0
+index = main
+renderXml = true
+
+[WinEventLog://Microsoft-Windows-PowerShell/Operational]
+disabled = 0
+index = main
+renderXml = true
