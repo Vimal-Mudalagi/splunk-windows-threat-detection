@@ -1,0 +1,7 @@
+index=main source="WinEventLog:Microsoft-Windows-Sysmon/Operational" "<EventID>1</EventID>"
+| rex field=_raw "<Data Name='Image'>(?<Image>[^<]+)</Data>"
+| rex field=_raw "<Data Name='CommandLine'>(?<CommandLine>[^<]+)</Data>"
+| rex field=_raw "<Data Name='ParentImage'>(?<ParentImage>[^<]+)</Data>"
+| where match(Image, "(?i)(^|\\x5c)net1?[.]exe$") AND match(CommandLine, "(?i)\\buser\\b")
+| table _time host Image CommandLine ParentImage
+| sort - _time
